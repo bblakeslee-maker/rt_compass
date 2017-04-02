@@ -3,6 +3,8 @@
 
 // Include files
 #include "stm32l476xx.h"
+#include "UART.h"
+#include "string.h"
 
 // Alternate function pin mappings
 // Format: AF[PinNumber]_[FunctionNumber]
