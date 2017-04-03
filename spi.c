@@ -60,7 +60,7 @@ void spi_write(uint8_t* buffer, uint16_t size){
 		USART_Write(USART2, (uint8_t*)"For!\n\r", strlen("For!\n\r"));
 		while(!(SPI1->SR & SPI_SR_TXE));
 		USART_Write(USART2, (uint8_t*)"After TXE!\n\r", strlen("After TXE!\n\r"));
-		SPI1->DR = buffer[i];
+		*((volatile uint8_t*)&SPI1->DR) = buffer[i];
 	}
 	USART_Write(USART2, (uint8_t*)"Exit for!\n\r", strlen("Exit for!\n\r"));
 	while(SPI1->SR & SPI_SR_BSY);
