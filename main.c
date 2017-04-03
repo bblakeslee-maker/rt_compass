@@ -2,7 +2,7 @@
 #include "main.h"
 
 int main(void){
-	uint8_t txBuffer = 'B';
+	uint8_t txBuffer = 'A';
 	// Hardware configuration
 	System_Clock_Init();
 	UART2_Init();
