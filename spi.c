@@ -48,29 +48,27 @@ static void init_gpio(void){
 	//GPIOD->AFR[0] |= AF4_5;
 }
 
-void spi_write(uint8_t* buffer, uint16_t size){
-	int i;
-	
+void spi_write(uint8_t data){
 	// Set single data line to output mode
 	SPI1->CR1 |= SPI_CR1_BIDIOE;
 	
-	// Dump buffer into SPI data register
-	for(i = 0; i < size; i++){
-		while(!(SPI1->SR & SPI_SR_TXE));
-		*((volatile uint8_t*)&SPI1->DR) = buffer[i];
-	}
-	while(SPI1->SR & SPI_SR_BSY);
+	while(!(SPI1->SR & SPI_SR_TXE));				// Wait until TX buffer empty
+	*((volatile uint8_t*)&SPI1->DR) = data;	// Write into SPI data register in 8 bit mode
+	while(SPI1->SR & SPI_SR_BSY);						// Wait until device not busy
 }
 
-void spi_read(uint8_t* buffer, uint16_t size){
-	int i;
+uint8_t spi_read(void){
+	uint8_t data;
 	
 	// Set single data line to input mode
-	SPI2->CR1 &= ~SPI_CR1_BIDIOE;
+	SPI1->CR1 &= ~SPI_CR1_BIDIOE;
 	
-	// Dump data into receive buffer
-	for(i = 0; i < size; i++){
-		while(!(SPI1->SR & SPI_SR_TXE));
-		
-	}
+	while(!(SPI1->SR & SPI_SR_TXE));					// Wait until TX buffer empty
+	*((volatile uint8_t*)&SPI1->DR) = DUMMY;	// Send dummy byte to generate clock signal
+	data = (uint8_t)(SPI1->DR);								// Get lower 8 bits of data register
+	
+	// Set single data line to output mode to stop clock
+	SPI1->CR1 |= SPI_CR1_BIDIOE;
+	
+	return data;
 }

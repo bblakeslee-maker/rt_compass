@@ -11,6 +11,9 @@
 #define AF1_5 (0x5 << 4)
 #define AF4_5 (0x5 << 16)
 
+// Dummy byte used for read
+#define DUMMY (0x00)
+
 /*
  * Initialize SPI2 hardware.
  * Configuration hardcoded in half duplex mode for Accel sensor.
@@ -23,19 +26,17 @@ void init_spi(void);
 static void init_gpio(void);
 
 /*
- * Write buffer of specified size over SPI.
+ * Write byte of data over SPI.
  *
- * @param buffer Pointer to buffer to data to transmit.
- * @param size Size of buffer to write in bytes.
+ * @param data Data byte to write.
  */
-void spi_write(uint8_t* buffer, uint16_t size);
+void spi_write(uint8_t data);
 
 /* 
- * Read buffer of specified size over SPI.
+ * Read byte of data over SPI.
  *
- * @param buffer Pointer to buffer to read data into.
- * @param size Amount of data to read in bytes.
+ * @return Byte of data from device.
  */
-void spi_read(uint8_t* buffer, uint16_t size);
+uint8_t spi_read(void);
 
 #endif
