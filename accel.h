@@ -14,6 +14,14 @@
 #define CTRL_REG6_A (0x25)
 #define CTRL_REG7_A (0x26)
 
+// Accelerometer data registers
+#define A_OUT_X_L (0x28)
+#define A_OUT_X_H (0x29)
+#define A_OUT_Y_L (0x2A)
+#define A_OUT_Y_H (0x2B)
+#define A_OUT_Z_L (0x2C)
+#define A_OUT_Z_H (0x2D)
+
 // Accelerometer full scale settings
 #define A_FS_0 (0x10)
 #define A_FS_1 (0x20)
