@@ -11,9 +11,6 @@
 #define AF1_5 (0x5 << 4)
 #define AF4_5 (0x5 << 16)
 
-// Dummy byte used for read
-#define DUMMY (0x00)
-
 /*
  * Initialize SPI2 hardware.
  * Configuration hardcoded in half duplex mode for Accel sensor.

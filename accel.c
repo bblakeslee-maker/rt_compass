@@ -24,7 +24,7 @@ void init_accel(void){
 }
 
 uint16_t read_accel_axis(accel_axis axis){
-	return 0;
+	spi_write(A_READ | 
 }
 
 void select_accel(void){

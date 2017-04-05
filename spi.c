@@ -16,6 +16,8 @@ void init_spi(void){
 	SPI2->CR1 &= ~SPI_CR1_LSBFIRST;	// Transmit MSB first
 	SPI2->CR1 &= ~SPI_CR1_SSM;			// Disable software slave management
 	SPI2->CR1 |= SPI_CR1_MSTR;			// Set SPI2 Master Mode
+	SPI2->CR1 |= SPI_CR1_BIDIOE;		// Set single data line to output mode
+
 	
 	SPI2->CR2 &= ~SPI_CR2_DS;
 	SPI2->CR2 |= (SPI_CR2_DS_2 | SPI_CR2_DS_1 | SPI_CR2_DS_0);	// Set 8 bit data transfers
@@ -50,7 +52,6 @@ uint8_t spi_read(void){
 	SPI2->CR1 &= ~SPI_CR1_BIDIOE;
 	
 	while(!(SPI2->SR & SPI_SR_TXE));					// Wait until TX buffer empty
-	//*((volatile uint8_t*)&SPI2->DR) = DUMMY;	// Send dummy byte to generate clock signal
 	data = (uint8_t)(SPI2->DR);								// Get lower 8 bits of data register
 	
 	// Set single data line to output mode to stop clock
