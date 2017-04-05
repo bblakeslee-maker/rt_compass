@@ -50,19 +50,15 @@ static void init_gpio(void){
 
 void spi_write(uint8_t* buffer, uint16_t size){
 	int i;
-	USART_Write(USART2, (uint8_t*)"Entered write!\n\r", strlen("Entered write!\n\r"));
 	
 	// Set single data line to output mode
 	SPI1->CR1 |= SPI_CR1_BIDIOE;
 	
 	// Dump buffer into SPI data register
 	for(i = 0; i < size; i++){
-		USART_Write(USART2, (uint8_t*)"For!\n\r", strlen("For!\n\r"));
 		while(!(SPI1->SR & SPI_SR_TXE));
-		USART_Write(USART2, (uint8_t*)"After TXE!\n\r", strlen("After TXE!\n\r"));
 		*((volatile uint8_t*)&SPI1->DR) = buffer[i];
 	}
-	USART_Write(USART2, (uint8_t*)"Exit for!\n\r", strlen("Exit for!\n\r"));
 	while(SPI1->SR & SPI_SR_BSY);
 }
 
@@ -74,6 +70,7 @@ void spi_read(uint8_t* buffer, uint16_t size){
 	
 	// Dump data into receive buffer
 	for(i = 0; i < size; i++){
+		while(!(SPI1->SR & SPI_SR_TXE));
 		
 	}
 }
