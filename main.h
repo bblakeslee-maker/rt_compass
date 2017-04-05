@@ -7,5 +7,6 @@
 #include "UART.h"
 #include "string.h"
 #include "spi.h"
+#include "accel.h"
 
 #endif

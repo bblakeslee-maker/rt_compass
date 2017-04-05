@@ -2,11 +2,15 @@
 #include "main.h"
 
 int main(void){
-	//uint8_t txBuffer = 'A';
+	uint32_t i;
 	// Hardware configuration
 	System_Clock_Init();
 	init_spi();
+	init_accel();
 	
-	spi_read();
-	while(1);
+	while(1){
+		select_accel();
+		spi_write('A');
+		deselect_accel();
+	}
 }
