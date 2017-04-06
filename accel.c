@@ -14,6 +14,12 @@ void init_accel(void){
 	// spi_write(A_WRITE | CTRL_REG6_A);
 	// spi_write(A_BOOT);
 	
+	// Enable auto increment and enable SPI read/write
+	select_accel();
+	spi_write(A_WRITE | CTRL_REG4_A);
+	spi_write(A_IF_ADD_INC | A_I2C_DISABLE | A_SIM);
+	deselect_accel();
+	
 	// Configure full scale sensing at +-4g
 	select_accel();
 	spi_write(A_WRITE | CTRL_REG4_A);
@@ -44,12 +50,16 @@ uint16_t read_accel_axis(accel_axis axis){
 	}
 	
 	// Get low data byte
+	select_accel();
 	spi_write(A_READ | addr_low);
 	data_low = spi_read();
+	deselect_accel();
 	
 	// Get high data byte
+	select_accel();
 	spi_write(A_READ | addr_high);
 	data_high = spi_read();
+	deselect_accel();
 	
 	return ((data_high << 8) | data_low);
 }

@@ -14,6 +14,9 @@
 #define CTRL_REG6_A (0x25)
 #define CTRL_REG7_A (0x26)
 
+// Accelerometer status register
+#define STATUS_REG_A (0x27)
+
 // Accelerometer data registers
 #define A_OUT_X_L (0x28)
 #define A_OUT_X_H (0x29)
@@ -21,6 +24,15 @@
 #define A_OUT_Y_H (0x2B)
 #define A_OUT_Z_L (0x2C)
 #define A_OUT_Z_H (0x2D)
+
+// Accelerometer address auto increment enable
+#define A_IF_ADD_INC (0x04)
+
+// Accelerometer I2C disable
+#define A_I2C_DISABLE (0x02)
+
+// Accelerometer SPI read/write enable
+#define A_SIM (0x01)
 
 // Accelerometer full scale settings
 #define A_FS_0 (0x10)
