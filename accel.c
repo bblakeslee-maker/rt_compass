@@ -2,13 +2,13 @@
 #include "accel.h"
 
 void init_accel(void){
-	// Initialize chip select line PE0
-	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOEEN;			// Enable clock
-	GPIOE->MODER &= ~GPIO_MODER_MODER0_1;			// Set output mode
-	GPIOE->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR0;	// Set high speed mode
-	GPIOE->OTYPER &= ~GPIO_OTYPER_OT_0;				// Set output type push-pull
-	GPIOE->PUPDR &= ~GPIO_PUPDR_PUPDR0;				// Disable pullup/pulldown
-	deselect_accel();													// Initialize CS line at high
+	// Initialize chip select line PC15
+	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOCEN;			// Enable clock
+	GPIOC->MODER &= ~GPIO_MODER_MODER15_1;		// Set output mode
+	GPIOC->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR15;// Set high speed mode
+	GPIOC->OTYPER &= ~GPIO_OTYPER_OT_15;			// Set output type push-pull
+	GPIOC->PUPDR &= ~GPIO_PUPDR_PUPDR15;			// Disable pullup/pulldown
+	//deselect_accel();													// Initialize CS line at high
 	
 	// Reset accelerometer -- Uncomment and insert delay after if there are problems
 	// spi_write(A_WRITE | CTRL_REG6_A);
@@ -65,9 +65,9 @@ uint16_t read_accel_axis(accel_axis axis){
 }
 
 void select_accel(void){
-	GPIOE->ODR &= ~GPIO_ODR_ODR_0;
+	GPIOC->ODR &= ~GPIO_ODR_ODR_15;
 }
 
 void deselect_accel(void){
-	GPIOE->ODR |= GPIO_ODR_ODR_0;
+	GPIOC->ODR |= GPIO_ODR_ODR_15;
 }

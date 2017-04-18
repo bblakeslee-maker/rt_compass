@@ -12,7 +12,7 @@
 #define AF4_5 (0x5 << 16)
 
 /*
- * Initialize SPI2 hardware.
+ * Initialize SPI1 hardware.
  * Configuration hardcoded in half duplex mode for Accel sensor.
  */
 void init_spi(void);
