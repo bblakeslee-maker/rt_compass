@@ -16,7 +16,7 @@ int main(void){
 	init_spi();
 	init_accel();
 	
-	// Read test code (Read currently broken)
+	// Read test code
 	select_accel();
 	spi_write(A_WRITE | CTRL_REG3_A);
 	spi_write((uint8_t)'A');
