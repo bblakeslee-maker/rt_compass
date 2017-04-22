@@ -22,7 +22,6 @@ void init_spi(void){
 	SPI1->CR2 &= ~SPI_CR2_DS;
 	SPI1->CR2 |= (SPI_CR2_DS_2 | SPI_CR2_DS_1 | SPI_CR2_DS_0);	// Set 8 bit data transfers
 	SPI1->CR2 |= SPI_CR2_SSOE;			// Set slave select output enable
-	// SPI1->CR1 |= SPI_CR1_SPE;				// Enable SPI interface
 }
 
 static void init_gpio(void){
