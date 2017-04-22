@@ -29,8 +29,9 @@ int main(void){
 	test_data = spi_read();
 	deselect_accel();
 	
-	USART_Write(USART2, (uint8_t*)"Test!\n\r", strlen("Test!\n\r"));
+	USART_Write(USART2, (uint8_t*)"Test: ", strlen("Test: "));
 	USART_Write(USART2, &test_data, 1);
+	USART_Write(USART2, (uint8_t*)"\n\r", 2);
 	
 	while(1);
 }
