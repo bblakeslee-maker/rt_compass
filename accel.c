@@ -14,16 +14,10 @@ void init_accel(void){
 	// spi_write(A_WRITE | CTRL_REG6_A);
 	// spi_write(A_BOOT);
 	
-	// Enable auto increment and enable SPI read/write
+	// Enable auto increment, enable SPI read/write, full scale +/-4g
 	select_accel();
 	spi_write(A_WRITE | CTRL_REG4_A);
-	spi_write(A_IF_ADD_INC | A_I2C_DISABLE | A_SIM);
-	deselect_accel();
-	
-	// Configure full scale sensing at +-4g
-	select_accel();
-	spi_write(A_WRITE | CTRL_REG4_A);
-	spi_write(A_FS_1);
+	spi_write(A_IF_ADD_INC | A_I2C_DISABLE | A_SIM | A_FS_1);
 	deselect_accel();
 	
 	// Configure block data update, output data rate (10Hz), and enable axes

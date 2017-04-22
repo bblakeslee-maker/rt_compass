@@ -45,17 +45,22 @@ void spi_write(uint8_t data){
 	while(SPI1->SR & SPI_SR_BSY);						// Wait until device not busy
 }
 
+// Broken -- Data present on bus, will not return data
 uint8_t spi_read(void){
-	uint8_t data;
+	uint8_t data = 'C';
 	
 	// Set single data line to input mode
 	SPI1->CR1 &= ~SPI_CR1_BIDIOE;
 	
-	while(!(SPI1->SR & SPI_SR_TXE));					// Wait until TX buffer empty
-	data = (uint8_t)(SPI1->DR);								// Get lower 8 bits of data register
+	//while(!(SPI1->SR & SPI_SR_TXE));					// Wait until TX buffer empty
+	//data = *((volatile uint8_t*)&SPI1->DR);		// Get lower 8 bits of data register
+	//while(!(SPI1->SR & SPI_SR_RXNE));
 	
 	// Set single data line to output mode to stop clock
 	SPI1->CR1 |= SPI_CR1_BIDIOE;
+	
+	//while(SPI1->SR & SPI_SR_BSY);						// Wait until device not busy
+	
 	
 	return data;
 }
