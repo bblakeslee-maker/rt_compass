@@ -1,6 +1,8 @@
 // Include files
 #include "accel.h"
 
+const float COUNT_TO_MG = 0.1204238921;
+
 void init_accel(void){
 	// Initialize GPIO clocks
 	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOEEN;
@@ -23,7 +25,7 @@ void init_accel(void){
 	// Enable auto increment, enable SPI read/write, full scale +/-4g
 	select_accel();
 	spi_write(A_WRITE | CTRL_REG4_A);
-	spi_write(A_IF_ADD_INC | A_I2C_DISABLE | A_SIM | A_FS_1);
+	spi_write(A_IF_ADD_INC | A_I2C_DISABLE | A_SIM /*| A_FS_1*/);
 	deselect_accel();
 	
 	// Enable accel data ready interrupt
