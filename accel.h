@@ -67,6 +67,9 @@
 #define A_WRITE (0x00)
 #define A_READ (0x80)
 
+// Accelerometer scale factor for count to mG conversion
+extern const float COUNT_TO_MG;
+
 // Axis channels
 enum accel_axis_E{
 	X_AXIS,

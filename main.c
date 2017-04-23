@@ -4,7 +4,7 @@
 int main(void){
 	uint8_t status;											// Holder for status register info
 	uint16_t count_x, count_y, count_z;	// Gravity levels in counts
-	float g_x, g_y, g_z;								// Gravity levels in G's
+	float mg_x, mg_y, mg_z;								// Gravity levels in mG's
 	
 	// Hardware configuration
 	System_Clock_Init();
@@ -16,9 +16,9 @@ int main(void){
 		while(!(GPIOE->IDR & ACCEL_DATA_READY_FLAG));
 		status = check_accel_status();
 		if(status & ZYXDA){
-			read_accel_axis(X_AXIS);
-			read_accel_axis(Y_AXIS);
-			read_accel_axis(Z_AXIS);
+			count_x = read_accel_axis(X_AXIS);
+			count_y = read_accel_axis(Y_AXIS);
+			count_z = read_accel_axis(Z_AXIS);
 		}
 	}
 }
