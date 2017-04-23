@@ -12,7 +12,7 @@ void init_accel(void){
 	GPIOE->PUPDR &= ~GPIO_PUPDR_PUPDR14;			// Disable pullup/pulldown
 	deselect_accel();													// Initialize CS line at high
 	
-	// Initialize input for accel data ready line
+	// Initialize input for accel data ready line PE12
 	GPIOE->MODER &= ~GPIO_MODER_MODER12;			// Set input mode
 	GPIOE->PUPDR &= ~GPIO_PUPDR_PUPDR12;			// Disable pullup/pulldown
 	
