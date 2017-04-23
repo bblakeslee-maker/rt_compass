@@ -18,12 +18,18 @@
 #define STATUS_REG_A (0x27)
 
 // Accelerometer data registers
-#define A_OUT_X_L (0x28)
-#define A_OUT_X_H (0x29)
-#define A_OUT_Y_L (0x2A)
-#define A_OUT_Y_H (0x2B)
-#define A_OUT_Z_L (0x2C)
-#define A_OUT_Z_H (0x2D)
+#define OUT_X_L_A (0x28)
+#define OUT_X_H_A (0x29)
+#define OUT_Y_L_A (0x2A)
+#define OUT_Y_H_A (0x2B)
+#define OUT_Z_L_A (0x2C)
+#define OUT_Z_H_A (0x2D)
+
+// Accelerometer data ready line mask
+#define ACCEL_DATA_READY_FLAG (0x1000)
+
+// Accelerometer triaxial data ready
+#define ZYXDA (0x08)
 
 // Accelerometer address auto increment enable
 #define A_IF_ADD_INC (0x04)
@@ -51,6 +57,9 @@
 #define A_ODR_1 (0x20)
 #define A_ODR_2 (0x40)
 
+// Accelerometer data ready interrupt
+#define INT_XL_DRDY (0x01)
+
 // Accelerometer reset
 #define A_BOOT (0x80)
 
@@ -77,6 +86,13 @@ void init_accel(void);
  * @return Binary value of axis.
  */
 uint16_t read_accel_axis(accel_axis axis);
+
+/*
+ * Get status register contents from accelerometer.
+ *
+ * @return Contents of status register.
+ */
+uint8_t check_accel_status(void);
 
 /*
  * Activates accel chip select line.
