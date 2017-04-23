@@ -2,7 +2,9 @@
 #include "main.h"
 
 int main(void){
-	uint8_t status;	// Holder for status register info
+	uint8_t status;											// Holder for status register info
+	uint16_t count_x, count_y, count_z;	// Gravity levels in counts
+	float g_x, g_y, g_z;								// Gravity levels in G's
 	
 	// Hardware configuration
 	System_Clock_Init();
