@@ -34,9 +34,9 @@ int main(void){
 		status = check_accel_status();
 		if(status & ZYXDA){
 			// Get data if data is ready on all three axes
-			count_x = read_accel_axis(X_AXIS);
-			count_y = read_accel_axis(Y_AXIS);
-			count_z = read_accel_axis(Z_AXIS);
+			count_x = read_accel_axis(X_AXIS_A);
+			count_y = read_accel_axis(Y_AXIS_A);
+			count_z = read_accel_axis(Z_AXIS_A);
 			
 			// Convert to mG
 			mg_x = (float)count_x * COUNT_TO_MG;
