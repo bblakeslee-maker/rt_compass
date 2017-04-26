@@ -24,6 +24,7 @@ int main(void){
 	UART2_Init();
 	init_spi();
 	init_accel();
+	init_mag();
 	
 #ifdef DEBUG
 	for(i = 0; i < 10; i++){
@@ -32,7 +33,7 @@ int main(void){
 #endif
 		while(!(GPIOE->IDR & ACCEL_DATA_READY_FLAG));
 		status = check_accel_status();
-		if(status & ZYXDA){
+		if(status & ZYXDA_A){
 			// Get data if data is ready on all three axes
 			count_x = read_accel_axis(X_AXIS_A);
 			count_y = read_accel_axis(Y_AXIS_A);

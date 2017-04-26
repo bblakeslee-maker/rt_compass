@@ -10,6 +10,7 @@
 #include "string.h"
 #include "spi.h"
 #include "accel.h"
+#include "mag.h"
 
 // Stability constant for roll
 extern const float ALPHA;
