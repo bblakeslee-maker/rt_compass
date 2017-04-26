@@ -41,9 +41,9 @@ void init_accel(void){
 	deselect_accel();
 }
 
-uint16_t read_accel_axis(accel_axis axis){
+int16_t read_accel_axis(accel_axis axis){
 	uint8_t address;
-	uint16_t data_low, data_high;
+	int16_t data_low, data_high;
 	
 	// Address decode
 	if(axis == X_AXIS){

@@ -88,7 +88,7 @@ void init_accel(void);
  * @param axis Axis to read from.
  * @return Binary value of axis.
  */
-uint16_t read_accel_axis(accel_axis axis);
+int16_t read_accel_axis(accel_axis axis);
 
 /*
  * Get status register contents from accelerometer.
