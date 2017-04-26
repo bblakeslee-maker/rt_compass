@@ -27,7 +27,7 @@
 #define OUT_Z_H_M (0x2D)
 
 // Magnetometer triaxial data ready
-#define ZYXDA (0x80)
+#define ZYXDA_M (0x80)
 
 // Accelerometer I2C disable
 #define I2C_DISABLE (0x80)
