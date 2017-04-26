@@ -29,7 +29,7 @@
 #define ACCEL_DATA_READY_FLAG (0x1000)
 
 // Accelerometer triaxial data ready
-#define ZYXDA (0x08)
+#define ZYXDA_A (0x08)
 
 // Accelerometer address auto increment enable
 #define A_IF_ADD_INC (0x04)
