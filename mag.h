@@ -12,6 +12,9 @@
 #define CTRL_REG4_M	(0x23)
 #define CTRL_REG5_M (0x24)
 
+// Magnetometer interrupt configuration register
+#define INT_CFG_M (0x30)
+
 // Magnetometer status register
 #define STATUS_REG_M (0x27)
 
@@ -22,6 +25,50 @@
 #define OUT_Y_H_M (0x2B)
 #define OUT_Z_L_M (0x2C)
 #define OUT_Z_H_M (0x2D)
+
+// Magnetometer triaxial data ready
+#define ZYXDA (0x80)
+
+// Accelerometer I2C disable
+#define I2C_DISABLE (0x80)
+
+// Accelerometer SPI read/write enable
+#define SIM (0x04)
+
+// Magnetometer output data rate
+#define DO2 (0x10)
+#define DO1 (0x08)
+#define DO0 (0x04)
+
+// Magnetometer XY axis performance mode
+#define OM1 (0x40)
+#define OM0 (0x20)
+
+// Magnetometer Z axis performance mode
+#define OMZ1 (0x80)
+#define OMZ0 (0x40)
+
+// Magnetometer full scale settings
+#define FS1 (0x40)
+#define FS0 (0x20)
+
+// Magnetometer block data update
+#define BDU (0x40)
+
+// Magnetometer triaxial interrupt enable
+#define XIEN (0x80)
+#define YIEN (0x40)
+#define ZIEN (0x20)
+
+// Magnetometer INT_MAG enable
+#define IEN (0x01)
+
+// Magnetometer read/write toggle
+#define M_WRITE (0x00)
+#define M_READ (0x80)
+
+// Magnetometer multibyte read
+#define M_MULTIBYTE (0x40)
 
 // Magnetometer scale factor for count to mGauss convertion
 extern const float COUNT_TO_MGAUSS;
