@@ -46,11 +46,11 @@ int16_t read_accel_axis(accel_axis axis){
 	int16_t data_low, data_high;
 	
 	// Address decode
-	if(axis == X_AXIS){
+	if(axis == X_AXIS_A){
 		address = OUT_X_L_A;
-	}else if(axis == Y_AXIS){
+	}else if(axis == Y_AXIS_A){
 		address = OUT_Y_L_A;
-	}else if(axis == Z_AXIS){
+	}else if(axis == Z_AXIS_A){
 		address = OUT_Z_L_A;
 	}
 	

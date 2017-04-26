@@ -72,9 +72,9 @@ extern const float COUNT_TO_MG;
 
 // Axis channels
 enum accel_axis_E{
-	X_AXIS,
-	Y_AXIS,
-	Z_AXIS
+	X_AXIS_A,
+	Y_AXIS_A,
+	Z_AXIS_A
 } typedef accel_axis;
 
 /*
