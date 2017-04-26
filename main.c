@@ -43,9 +43,9 @@ int main(void){
 			mg_y = (float)count_y * COUNT_TO_MG;
 			mg_z = (float)count_z * COUNT_TO_MG;
 
-			roll_rad = atan2(mg_y, mg_z);														// Compute roll
+			roll_rad = atan2(mg_y, mg_z);													// Compute roll
 			mg_z2 = mg_y * sin(roll_rad) + mg_z * cos(roll_rad);	// Pitch intermediary
-			pitch_rad = atan(-mg_x / mg_z2);												// Compute pitch
+			pitch_rad = atan(-mg_x / mg_z2);											// Compute pitch
 			
 #ifdef DEBUG
 			sprintf(buffer, "mg_x = %f\n\r", mg_x);
