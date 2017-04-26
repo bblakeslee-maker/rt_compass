@@ -11,6 +11,9 @@
 #include "spi.h"
 #include "accel.h"
 
+// Stability constant for roll
+extern const float ALPHA;
+
 // Define pi (can't find it in math.h)
 extern const float PI;
 
