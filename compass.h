@@ -11,6 +11,9 @@
 // Accelerometer scale factor for count to mG conversion
 extern const float COUNT_TO_MG;
 
+// Magnetometer scale factor for count to milligauss conversion
+extern const float COUNT_TO_MILLIGAUSS;
+
 // Stability constant for roll
 extern const float ALPHA;
 
@@ -59,4 +62,37 @@ double compute_pitch(double roll_rad, double mg_x, double mg_y, double mg_z);
  */
 void print_accel_telemetry(double mg_x, double mg_y, double mg_z, 
 													 double roll_rad, double pitch_rad);
+
+/*
+ * Converts magnetometer counts to milligauss.
+ *
+ * @param count ADC value from magnetometer.
+ * @return Value in milligauss.
+ */
+double count_to_milligauss(int16_t count);
+
+/*
+ * Compute yaw angle (compass heading) of board in radians.
+ *
+ * @param roll_rad Roll angle in radians.
+ * @param pitch_rad Pitch angle in radians.
+ * @param mGauss_x X-axis magnetic vector in milligauss.
+ * @param mGauss_y Y-axis magnetic vector in milligauss.
+ * @param mGauss_z Z-axis magnetic vector in milligauss.
+ * @return Yaw (heading angle) in radians.
+ */
+double compute_yaw(double roll_rad, double pitch_rad, \
+									 double mGauss_x, double mGauss_y, double mGauss_z);
+
+/*
+ * Prints out magnetic vectors in milligauss over USART2.
+ *
+ * @param mGauss_x X-axis magnetic vector in milligauss.
+ * @param mGauss_y Y-axis magnetic vector in milligauss.
+ * @param mGauss_z Z-axis magnetic vector in milligauss.
+ * @param yaw_rad Yaw angle (compass heading) in radians.
+ */
+void print_mag_telemetry(double mGauss_x, double mGauss_y, \
+												 double mGauss_z, double yaw_rad);
+
 #endif
