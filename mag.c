@@ -87,6 +87,10 @@ uint8_t check_mag_status(void){
 	return data;
 }
 
+bool mag_data_ready(){
+	return (GPIOE->IDR & MAG_DATA_READY_FLAG);
+}
+
 void select_mag(void){
 	GPIOE->ODR &= ~GPIO_ODR_ODR_10;
 }

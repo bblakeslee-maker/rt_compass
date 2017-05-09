@@ -3,6 +3,7 @@
 
 // Include files
 #include "stm32l476xx.h"
+#include <stdbool.h>
 #include "spi.h"
 
 // Magnetometer control registers
@@ -26,8 +27,11 @@
 #define OUT_Z_L_M (0x2C)
 #define OUT_Z_H_M (0x2D)
 
+// Magnetometer data ready line mask
+#define MAG_DATA_READY_FLAG (0x0800)
+
 // Magnetometer triaxial data ready
-#define ZYXDA_M (0x80)
+#define ZYXDA_M (0x08)
 
 // Accelerometer I2C disable
 #define I2C_DISABLE (0x80)
@@ -99,6 +103,13 @@ int16_t read_mag_axis(mag_axis axis);
  * @return Contents of status register.
  */
 uint8_t check_mag_status(void);
+
+/*
+ * Tests mag data ready line state.
+ *
+ * @return True if mag data ready, false otherwise.
+ */
+bool mag_data_ready(void);
 
 /*
  * Activates mag chip select line.
