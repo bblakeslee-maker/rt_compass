@@ -73,6 +73,10 @@ uint8_t check_accel_status(void){
 	return data;
 }
 
+bool accel_data_ready(){
+	return (GPIOE->IDR & ACCEL_DATA_READY_FLAG);
+}
+
 void select_accel(void){
 	GPIOE->ODR &= ~GPIO_ODR_ODR_14;
 }

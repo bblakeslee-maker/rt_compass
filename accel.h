@@ -3,6 +3,7 @@
 
 // Include files
 #include "stm32l476xx.h"
+#include <stdbool.h>
 #include "spi.h"
 
 // Accelerometer control registers
@@ -86,6 +87,13 @@ void init_accel(void);
  * @return Binary value of axis.
  */
 int16_t read_accel_axis(accel_axis axis);
+
+/*
+ * Tests accel data ready line state.
+ *
+ * @return True if accel data ready, false otherwise.
+ */
+bool accel_data_ready(void);
 
 /*
  * Get status register contents from accelerometer.
