@@ -1,8 +1,6 @@
 // Include files
 #include "accel.h"
 
-const float COUNT_TO_MG = 0.1204238921;
-
 void init_accel(void){
 	// Initialize GPIO clocks
 	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOEEN;
