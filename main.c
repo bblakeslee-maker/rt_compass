@@ -22,7 +22,6 @@ int main(void){
 	
 	for(i = 0; i < 10; i++){
 		while(!accel_data_ready());
-		while(!mag_data_ready());
 		
 		status = check_accel_status();
 		if(status & ZYXDA_A){
@@ -45,6 +44,7 @@ int main(void){
 #endif
 		}
 		
+		while(!mag_data_ready());
 		status = check_mag_status();
 		if(status & ZYXDA_M){
 			// Get mag data if data is ready on all three axes
@@ -62,10 +62,8 @@ int main(void){
 			
 #ifdef DEBUG
 			print_mag_telemetry(mGauss_x, mGauss_y, mGauss_z, yaw_rad);
+			USART_Write(USART2, (uint8_t*)"**********\n\r", strlen("**********\n\r"));
 #endif
 		}
 	}
-#ifdef DEBUG
-	USART_Write(USART2, (uint8_t*)"**********\n\r", strlen("**********\n\r"));
-#endif
 }
