@@ -8,12 +8,6 @@
 #include "UART.h"
 #include "string.h"
 
-// Accelerometer scale factor for count to mG conversion
-extern const float COUNT_TO_MG;
-
-// Magnetometer scale factor for count to milligauss conversion
-extern const float COUNT_TO_MILLIGAUSS;
-
 // Stability constant for roll
 extern const float ALPHA;
 
@@ -22,14 +16,6 @@ extern const float PI;
 
 // Radian to degree scale factor
 extern const float RADIAN_TO_DEGREE;
-
-/*
- * Converts accelerometer counts to milli-G's.
- *
- * @param count ADC value from accelerometer
- * @return Value in milli-G's
- */
-double count_to_mg(int16_t count);
 
 /*
  * Computes roll angle of board in radians.
@@ -62,14 +48,6 @@ double compute_pitch(double roll_rad, double mg_x, double mg_y, double mg_z);
  */
 void print_accel_telemetry(double mg_x, double mg_y, double mg_z, 
 													 double roll_rad, double pitch_rad);
-
-/*
- * Converts magnetometer counts to milligauss.
- *
- * @param count ADC value from magnetometer.
- * @return Value in milligauss.
- */
-double count_to_milligauss(int16_t count);
 
 /*
  * Compute yaw angle (compass heading) of board in radians.

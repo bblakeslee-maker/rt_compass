@@ -68,6 +68,9 @@
 #define A_WRITE (0x00)
 #define A_READ (0x80)
 
+// Accelerometer scale factor for count to mG conversion
+extern const float COUNT_TO_MG;
+
 // Axis channels
 enum accel_axis_E{
 	X_AXIS_A,
@@ -87,6 +90,14 @@ void init_accel(void);
  * @return Binary value of axis.
  */
 int16_t read_accel_axis(accel_axis axis);
+
+/*
+ * Converts accelerometer counts to milli-G's.
+ *
+ * @param count ADC value from accelerometer
+ * @return Value in milli-G's
+ */
+double count_to_mg(int16_t count);
 
 /*
  * Tests accel data ready line state.

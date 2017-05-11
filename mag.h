@@ -74,8 +74,29 @@
 // Magnetometer multibyte read
 #define M_MULTIBYTE (0x40)
 
-// Magnetometer scale factor for count to mGauss convertion
-extern const float COUNT_TO_MGAUSS;
+// Number of samples to be collected for calibration
+#define CALIBRATION_COUNT (100)
+
+// Sample buffer for x-axis calibration
+extern float x_axis_cal_array[CALIBRATION_COUNT];
+
+// Sample buffer for y-axis calibration
+extern float y_axis_cal_array[CALIBRATION_COUNT];
+
+// Sample buffer for z-axis calibration
+extern float z_axis_cal_array[CALIBRATION_COUNT];
+
+// Calibration value for x-axis
+extern float x_axis_offset;
+
+// Calibration value for y-axis
+extern float y_axis_offset;
+
+// Calibration value for z-axis
+extern float z_axis_offset;
+
+// Magnetometer scale factor for count to milligauss conversion
+extern const float COUNT_TO_MILLIGAUSS;
 
 // Axis channels
 enum mag_axis_E{
@@ -90,12 +111,25 @@ enum mag_axis_E{
 void init_mag(void);
 
 /*
+ * Performs in place magnetometer calibration.
+ */
+void calibrate_mag(void);
+
+/*
  * Read from specified mag axis.
  *
  * @param axis Axis to read from.
  * @return Binary value of axis.
  */
 int16_t read_mag_axis(mag_axis axis);
+
+/*
+ * Converts magnetometer counts to milligauss.
+ *
+ * @param count ADC value from magnetometer.
+ * @return Value in milligauss.
+ */
+double count_to_milligauss(int16_t count);
 
 /*
  * Get status register contents from magnetometer.
@@ -120,5 +154,10 @@ void select_mag(void);
  * Deactivates mag chip select line.
  */
 void deselect_mag(void);
+
+/*
+ * Prints out magnetometer calibration constants.
+ */
+void print_mag_cal(void);
 
 #endif

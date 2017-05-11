@@ -1,14 +1,8 @@
 #include "compass.h"
 
-const float COUNT_TO_MG = 0.1204238921;
-const float COUNT_TO_MILLIGAUSS = 0.48828125;
 const float PI = 3.14159265358979323846;
 const float RADIAN_TO_DEGREE = 180 / PI;
 const float ALPHA = 0.03;
-
-double count_to_mg(int16_t count){
-	return ((float)count * COUNT_TO_MG);
-}
 
 double compute_roll(double mg_y, double mg_z){
 	return atan2(mg_y, mg_z);
@@ -38,10 +32,6 @@ void print_accel_telemetry(double mg_x, double mg_y, double mg_z, \
 	pitch_deg = pitch_rad * RADIAN_TO_DEGREE;			// Convert to degree
 	sprintf(buffer, "Pitch = %f\n\r", pitch_deg);
 	USART_Write(USART2, (uint8_t*)buffer, strlen(buffer));
-}
-
-double count_to_milligauss(int16_t count){
-	return ((float)count * COUNT_TO_MILLIGAUSS);
 }
 
 double compute_yaw(double roll_rad, double pitch_rad, \
