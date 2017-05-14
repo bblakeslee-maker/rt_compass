@@ -74,18 +74,6 @@
 // Magnetometer multibyte read
 #define M_MULTIBYTE (0x40)
 
-// Number of samples to be collected for calibration
-#define CALIBRATION_COUNT (100)
-
-// Sample buffer for x-axis calibration
-extern float x_axis_cal_array[CALIBRATION_COUNT];
-
-// Sample buffer for y-axis calibration
-extern float y_axis_cal_array[CALIBRATION_COUNT];
-
-// Sample buffer for z-axis calibration
-extern float z_axis_cal_array[CALIBRATION_COUNT];
-
 // Calibration value for x-axis
 extern float x_axis_offset;
 
@@ -109,11 +97,6 @@ enum mag_axis_E{
  * Initialize magnetometer.
  */
 void init_mag(void);
-
-/*
- * Performs in place magnetometer calibration.
- */
-void calibrate_mag(void);
 
 /*
  * Read from specified mag axis.

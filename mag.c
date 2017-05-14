@@ -1,9 +1,6 @@
 // Include files
 #include "mag.h"
 
-float x_axis_cal_array[CALIBRATION_COUNT];
-float y_axis_cal_array[CALIBRATION_COUNT];
-float z_axis_cal_array[CALIBRATION_COUNT];
 float x_axis_offset;
 float y_axis_offset;
 float z_axis_offset;
@@ -59,34 +56,6 @@ void init_mag(void){
 	spi_write(M_WRITE | INT_CFG_M);
 	spi_write(XIEN | YIEN | ZIEN | IEN);
 	deselect_mag();
-}
-
-void calibrate_mag(void){
-	int i;
-	float x_total = 0;
-	float y_total = 0;
-	float z_total = 0;
-	
-	// Collect calibration samples
-	for(i = 0; i < CALIBRATION_COUNT; i++){
-		
-	}
-	
-	// Average each calibration array
-	for(i = 0; i < CALIBRATION_COUNT; i++){
-		x_total += count_to_milligauss(x_axis_cal_array[i]);
-	}
-	x_axis_offset = x_total / CALIBRATION_COUNT;
-	
-	for(i = 0; i < CALIBRATION_COUNT; i++){
-		y_total += count_to_milligauss(y_axis_cal_array[i]);
-	}
-	y_axis_offset = y_total / CALIBRATION_COUNT;
-	
-	for(i = 0; i < CALIBRATION_COUNT; i++){
-		z_total += count_to_milligauss(z_axis_cal_array[i]);
-	}
-	z_axis_offset = z_total / CALIBRATION_COUNT;
 }
 
 int16_t read_mag_axis(mag_axis axis){
