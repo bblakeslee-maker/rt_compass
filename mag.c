@@ -1,9 +1,9 @@
 // Include files
 #include "mag.h"
 
-float x_axis_offset;
-float y_axis_offset;
-float z_axis_offset;
+float x_axis_offset = -251.264;
+float y_axis_offset = 3554.278;
+float z_axis_offset = 293.5742;
 const float COUNT_TO_MILLIGAUSS = 0.48828125;
 
 void init_mag(void){
@@ -30,7 +30,7 @@ void init_mag(void){
 	// Configure data rate at 10Hz, XY ultra high performance mode
 	select_mag();
 	spi_write(M_WRITE | CTRL_REG1_M);
-	spi_write(OM1 | OM0 | DO2);
+	spi_write(OM1 | OM0 | DO2 | DO1);
 	deselect_mag();
 	
 	// Configure Z axis performance mode

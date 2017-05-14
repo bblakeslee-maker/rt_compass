@@ -5,6 +5,9 @@ int main(void){
 	uint8_t status;												// Holder for status register info
 	int16_t count_x, count_y, count_z;		// Gravity levels in counts
 	double mGauss_x, mGauss_y, mGauss_z;	// Magnetic levels in milligauss
+	double mGauss_x_debias, 							// Debiased magnetic levels
+				 mGauss_y_debias,
+				 mGauss_z_debias;
 	double yaw_rad;												// Yaw angle in radians
 	double mg_x, mg_y, mg_z;							// Gravity levels in mG's
 	double roll_rad, pitch_rad;						// Roll and pitch in radians
@@ -57,8 +60,14 @@ int main(void){
 			mGauss_y = count_to_milligauss(count_y);
 			mGauss_z = count_to_milligauss(count_z);
 			
+			// Correct for bias
+			mGauss_x_debias = mGauss_x - x_axis_offset;
+			mGauss_y_debias = mGauss_y - y_axis_offset;
+			mGauss_z_debias = mGauss_z - z_axis_offset;
+			
 			// Compute compass heading
-			yaw_rad = compute_yaw(roll_rad, pitch_rad, mGauss_x, mGauss_y, mGauss_z);
+			yaw_rad = compute_yaw(roll_rad, pitch_rad, 
+														mGauss_x_debias, mGauss_y_debias, mGauss_z_debias);
 			
 #ifdef DEBUG
 			print_mag_telemetry(mGauss_x, mGauss_y, mGauss_z, yaw_rad);
