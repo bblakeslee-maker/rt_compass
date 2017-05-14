@@ -12,5 +12,6 @@
 #include "accel.h"
 #include "mag.h"
 #include "compass.h"
+#include "lcd.h"
 
 #endif

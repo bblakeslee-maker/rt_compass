@@ -17,6 +17,16 @@ extern const float PI;
 // Radian to degree scale factor
 extern const float RADIAN_TO_DEGREE;
 
+// Angle ranges for decoding angle into compass heading
+extern const float N_NE_BOUND;
+extern const float NE_E_BOUND;
+extern const float E_SE_BOUND;
+extern const float SE_S_BOUND;
+extern const float S_SW_BOUND;
+extern const float SW_W_BOUND;
+extern const float W_NW_BOUND;
+extern const float NW_N_BOUND;
+
 /*
  * Computes roll angle of board in radians.
  *

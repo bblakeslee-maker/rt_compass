@@ -3,6 +3,14 @@
 const float PI = 3.14159265358979323846;
 const float RADIAN_TO_DEGREE = 180 / PI;
 const float ALPHA = 0.03;
+const float N_NE_BOUND = 22.5;
+const float NE_E_BOUND = 67.5;
+const float E_SE_BOUND = 112.5;
+const float SE_S_BOUND = 157.5;
+const float S_SW_BOUND = -157.5;
+const float SW_W_BOUND = -112.5;
+const float W_NW_BOUND = -67.5;
+const float NW_N_BOUND = -22.5;
 
 double compute_roll(double mg_y, double mg_z){
 	return atan2(mg_y, mg_z);
